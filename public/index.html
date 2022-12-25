@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PawLogin | API</title>
+</head>
+<body>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <button id="btn" style="background: none; border: none;"><img src="https://pbs.twimg.com/profile_images/1521234639305809922/nAjlw7Pd_400x400.png" height="80px"></button>
+
+
+  <script>
+    
+    fetch('/login?action=create')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        add = data["account"];
+    });
+    const btn = document.getElementById('btn');
+      btn.onclick = function(){
+        $.ajax({
+          url: '/login?action=verify&account=' + add,
+          method: 'GET'
+        })
+          .done(function(response) {
+            console.log(response);
+            document.cookie = 'account=' + response["account"]; //Crée ou met à jour un cookie 'user'
+            swal({ title: 'Bienvenue ' + response["account"].substring(0, 10) + '...', icon: 'https://doggycon.dogenano.io/api/v1/pilou/' + response["account"] ,width: 600, padding: '3em', color: '#716add', background: '#fff url(/images/trees.png)', backdrop: ` rgba(0,0,123,0.4) url("/images/nyan-cat.gif") left top no-repeat ` })
+          })
+          .fail(function(error) {
+            console.log(error);
+          });
+        swal({
+        title: "Please send 1 $XDG to this address:",
+        text: add,
+        icon: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=nano:" + add + "?amount=100000000000000000000000000000",
+        buttons: ["Cancel 😭"],
+        dangerMode: true,
+      })
+      }
+      
+   </script>
+
+</body>
+</html>
