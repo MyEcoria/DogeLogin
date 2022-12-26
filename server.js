@@ -25,7 +25,7 @@ app.get('/login', (req, res) => {
   console.log(req.query);
   if (req.query['action'] == "create") {
     const options = {
-    url: 'http://192.168.1.24:7030',
+    url: 'http://31.37.136.162:7030',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -82,15 +82,22 @@ app.get('/login', (req, res) => {
             data = { "account": data }
             console.log(data);
             res.json(data);
-
+	    ws.close();
           }
         }
 
       };
 
+
       setTimeout(function close() {
-        ws.close();
-        res.json("Timeout");
+        
+	try {
+          ws.send('un message');
+          console.log('La connection WebSocket est ouverte');
+          ws.close();
+        } catch (error) {
+          console.log('La connection WebSocket est fermée');
+        }
       }, 60000);
 
     } else { console.log("Yes"); }
