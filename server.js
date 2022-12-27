@@ -6,9 +6,10 @@ const ReconnectingWebSocket = require('reconnecting-websocket');
 const request = require('request');
 const axios = require('axios');
 
+// Charger les fichiers statiques depuis le répertoire 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// Définir une route '/' qui renvoie le fichier 'index.html' du répertoire 'public'
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
