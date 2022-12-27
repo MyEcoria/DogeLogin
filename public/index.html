@@ -5,52 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DogeLogin</title>
   <style>
-		/* Style du div */
-		.center {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
-		/* Style du bouton */
-		.button {
-			display: flex;
-			align-items: center;
-			margin: 0 auto;
-			width: 200px;
-			height: 50px;
-			border: none;
-			background: linear-gradient(to right, #AED6F1, #5DADE2);
-			color: white;
-			font-size: 16px;
-			cursor: pointer;
-		}
-		/* Style du logo */
-		.logo {
-			display: block;
-			margin: 0 auto;
-			width: 50px;
-			height: 50px;
-			background: url('https://pbs.twimg.com/profile_images/1521234639305809922/nAjlw7Pd_400x400.png') no-repeat center;
-			background-size: cover;
-		}
-		/* Style du body */
-		body {
-			background-color: #D1F2EB; /* Couleur qui va bien avec le bouton */
-			text-align: center;
-			margin: 0;
-			padding: 0;
-		}
-	</style>
+    body {
+      background-color: #E8E8E8; /* couleur de fond du body */
+    }
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #6441A5; /* couleur de fond du bouton */
+      color: white;
+      font-size: 18px;
+      padding: 15px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button img {
+      height: 1em;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <div class="center">
-	<button class="button" id="btn">
-		<div class="logo"></div>
-		Connexion avec Dogenano
-	</button>
+    <button class="button" id="btn">
+      <img src="https://pbs.twimg.com/profile_images/1521234639305809922/nAjlw7Pd_400x400.png" alt="DogeNano logo">
+      Connexion avec DogeNano
+    </button>
   </div>
 
   <script>
