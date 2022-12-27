@@ -10,5 +10,9 @@ Pour l'action 'verify', il vérifie si l'adresse passée en paramètre commence 
 
 Le serveur écoute également les requêtes entrantes sur le port 3000.
 
+# Installation avec Docker
 
+Modifier le fichier.env
 
+1) `sudo docker build --no-cache -t login:latest .`
+2) `sudo docker run --restart=unless-stopped --env-file .env -d --name login -p 3000:3000 login:latest`
