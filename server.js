@@ -1,22 +1,9 @@
-// On importe le module 'express' et on le stocke dans la variable 'express'
 const express = require('express');
-
-// On importe le module 'path' et on le stocke dans la variable 'path'
 const path = require('path');
-
-// On crée une application express et on la stocke dans la variable 'app'
 const app = express();
-
-// On importe le module 'ws' (WebSocket) et on le stocke dans la variable 'WS'
 const WS = require('ws');
-
-// On importe le module 'reconnecting-websocket' et on le stocke dans la variable 'ReconnectingWebSocket'
 const ReconnectingWebSocket = require('reconnecting-websocket');
-
-// On importe le module 'request' et on le stocke dans la variable 'request'
 const request = require('request');
-
-// On importe le module 'axios' et on le stocke dans la variable 'axios'
 const axios = require('axios');
 
 
