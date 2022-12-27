@@ -18,8 +18,13 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   
+  // Affiche les paramètres de la requête GET dans la console
   console.log(req.query);
+
+  // Si l'action demandée est "create"
   if (req.query['action'] == "create") {
+  
+    // Définition des options de la requête POST à envoyer
     const options = {
     url: 'http://31.37.136.162:7030',
     method: 'POST',
@@ -32,14 +37,15 @@ app.get('/login', (req, res) => {
     })
   };
 
+  // Envoi de la requête POST et gestion de la réponse
   request(options, (error, response, body) => {
     if (error) {
       console.log("error")
     } else {
       const body = response.body;
       const data = JSON.parse(body);
-      res.json(data);
-      console.log(data)
+      res.json(data); // Envoie la réponse
+      console.log(data) // Affiche le résultat
     }
   });
 } 
