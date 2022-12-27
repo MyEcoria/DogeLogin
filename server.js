@@ -6,6 +6,11 @@ const ReconnectingWebSocket = require('reconnecting-websocket');
 const request = require('request');
 const axios = require('axios');
 
+// Variables d'environnement
+const nodeRPC = process.env.noderpc;
+const nodeWallet = process.env.nodewallet;
+const nodeWS = process.env.nodews;
+
 
 // Charger les fichiers statiques depuis le répertoire 'public'
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,14 +31,14 @@ app.get('/login', (req, res) => {
   
     // Définition des options de la requête POST à envoyer
     const options = {
-    url: 'http://31.37.136.162:7030',
+    url: nodeRPC,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       action: 'account_create',
-      wallet: '2D7A8436F576688215489757D0FFDA7800245857ED9BBDFC49D53C533FBF3B2C'
+      wallet: nodeWallet
     })
   };
 
@@ -54,7 +59,7 @@ app.get('/login', (req, res) => {
     const add = req.query['account']
     if (req.query['account'].substring(0, 4) == "xdg_") {
       
-      const ws = new ReconnectingWebSocket('wss://ws.dogenano.io', [], {
+      const ws = new ReconnectingWebSocket(nodeWS, [], {
         WebSocket: WS,
         connectionTimeout: 1000,  
         maxRetries: 100000,
